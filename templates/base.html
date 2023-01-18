@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %} {% endblock %}</title>
+
+  <link rel="stylesheet" href="{% static 'base.css' %}">
+  <link rel="stylesheet" href="{% static 'components/layout.css' %}">
+  <link rel="shortcut icon" href="{% static 'img/icon.png' %}" type="image/x-icon">
+  {% block extracss %} {% endblock %}
+</head>
+
+<body>
+{% include 'components/header.html' %}
+{% block content %} {% endblock %}
+{% block extrajs %} {% endblock %}
+</body>
+</html>

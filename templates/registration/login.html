@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'components/form.css' %}">
+  <link rel="stylesheet" href="{% static 'registration/login.css' %}">
+{% endblock %}
+
+{% block title %}
+  Log In
+{% endblock %}
+
+{% block content %}
+  <main id="main">
+    <h1 class="mb-1">Log In</h1>
+
+    <form action="" method="post" class="form">
+      {% csrf_token %}
+      <div class="field p-1">
+        <div class="label">
+          {{ form.username.label }}
+        </div>
+        {% render_field form.username class+="input" %}
+      </div>
+
+      <div class="field p-1">
+        <div class="label">
+          {{ form.password.label }}
+        </div>
+        {% render_field form.password class+="input" %}
+      </div>
+
+      <div class="field p-1">
+        <input type="submit" value="Login" class="button">
+      </div>
+    </form>
+  </main>
+
+{% endblock %}

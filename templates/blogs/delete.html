@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'blogs/delete.css' %}">
+{% endblock %}
+
+{% block content %}
+  <main id="main">
+    <h1 class="h1">Are you sure Delete `{{ blog.title }}`?</h1>
+
+    <div class="mt-1">
+      <form action="" method="post" class="form">
+        {% csrf_token %}
+        <div class="field mb-1">
+          <p>{{ blog.title }}</p>
+          <p>{{ blog.content }}</p>
+        </div>
+
+        <input type="submit" value="Delete" class="button">
+      </form>
+    </div>
+  </main>
+{% endblock %}

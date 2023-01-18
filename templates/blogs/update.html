@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'components/font.css' %}">
+  <link rel="stylesheet" href="{% static 'components/new_form.css' %}">
+{% endblock %}
+
+{% block title %}
+  blogs/update.html
+{% endblock %}
+
+{% block content %}
+  <main id="main">
+    <form method="post" id="form">
+      {% csrf_token %}
+      <h1 class="h1 mt-1 ml-2">Update: {{ title }}</h1>
+
+      <div id="form-header" class="mt-2 ml-2">
+        <div id="title">
+          <span class="label">{{ form.title.label }}</span>
+          {% render_field form.title class+="input" placeholder="Title" %}
+        </div>
+
+        <div id="is-public">
+          <span>{{ form.is_public.label }}</span>
+          {% render_field form.is_public class+="checkbox" %}
+        </div>
+
+        <input type="submit" value="Update" class="button" id="update-button">
+      </div>
+
+      <div id="form-content" class="ml-2">
+        <p id="content-label">{{ form.content.label }}</p>
+        {% render_field form.content class+="input" id="content" %}
+      </div>
+    </form>
+  </main>
+{% endblock %}

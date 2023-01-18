@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load markdown_filter %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'blogs/detail.css' %}">
+  <link rel="stylesheet" href="{% static 'components/markdown.css' %}">
+  <link rel="stylesheet" href={% static 'highlighting/github-dark.min.css' %}>
+{% endblock %}
+
+{% block extrajs %}
+  <script>
+    // when click like button, toggle like
+    function toggle_like() {
+      fetch(`/blogs/like/{{ blog.id }}/toggle/`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+          "X-CSRFToken": "{{ csrf_token }}",
+        }
+      }).then((res) => {
+        return res.json();
+      }).then(data => {
+        const like_count = document.getElementById("like_count_num");
+        like_count.textContent = data["like_count"];
+      }).then(() => {
+        get_like();
+      });
+    }
+
+    // function get_like()
+    // when open blogs/detail.html, and click like button run this func.
+    // 1. get like or not from api.
+    // 2. change blogs/detail.html like button color.
+    function get_like() {
+      fetch(`/blogs/like/{{ blog.id }}/`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+          "X-CSRFToken": "{{ csrf_token }}",
+        }
+      }).then((res) => {
+        return res.json();
+      }).then(data => {
+        const like_button = document.getElementById("like")
+        if (data["is_liked"]) {
+          like_button.innerHTML = "&#10084;&#65039;";
+        } else {
+          like_button.innerHTML = "&#9825;";
+        }
+      });
+    }
+
+    // click like_button
+    const like_button = document.getElementById("like");
+    like_button.addEventListener("click", async () => {
+      toggle_like();
+    });
+
+    // when open blogs/detail.html
+    document.addEventListener("DOMContentLoaded", () => {
+      get_like();
+    });
+  </script>
+
+  {# code highlighting #}
+  <script src="{% static 'js/highlight.min.js' %}"></script>
+  <script>
+    for (const block of document.querySelectorAll("pre code")) {
+      hljs.highlightElement(block);
+    }
+  </script>
+{% endblock %}
+
+{% block title %}
+  blogs/detail.html
+{% endblock %}
+
+{% block content %}
+  <main id="main">
+    <div class="container">
+      <div class="sidebar">
+        <div class="like-wrapper">
+          <p id="like">&#9825;</p>
+          <p id="like_count_num">{{ like_count }}</p>
+        </div>
+
+        <div class="favorite-wrapper">
+          <button>TODO: Favorites</button>
+        </div>
+      </div>
+
+      <div class="blog">
+        <div class="blog-header">
+          <div class="item">
+            <h1 class="h1 title">{{ blog.title }}</h1>
+            <p>@{{ blog.author.username }}</p>
+          </div>
+
+          <div class="item">
+            <p class="created-at">Created: {{ blog.created_at }}</p>
+            <p class="updated-at">Updated: {{ blog.updated_at }}</p>
+          </div>
+
+          <div class="item">
+            <p>Read Count: {{ blog.clicked_count }}</p>
+          </div>
+
+          <div class="item">
+            {% if user == blog.author %}
+              <a href="{% url 'blogs:update' blog.id %}" class="blog-edit">Edit</a>
+              <a href="{% url 'blogs:delete' blog.id %}" class="blog-delete">Delete</a>
+            {% endif %}
+          </div>
+        </div>
+
+        <div id="markdown">
+          {{ blog.content | md2html | safe }}
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

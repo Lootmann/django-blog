@@ -1,0 +1,80 @@
+#form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 60%;
+
+  font-size: 22px;
+}
+
+#form-header {
+  display: flex;
+  justify-content: space-around;
+  background-color: #e6c07b;
+  padding: 5px 0;
+  border-radius: 10px;
+}
+
+#title {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#title > .input {
+  width: 500px;
+  font-size: 20px;
+  padding-left: 8px;
+  border-radius: 10px;
+}
+
+#is-public {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#is-public > .checkbox {
+  transform: translateY(10%);
+  width: 20px;
+  height: 20px;
+}
+
+#update-button {
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 0 5px;
+}
+
+#update-button:hover {
+  color: white;
+  background-color: #0c7300;
+  transition: all 100ms 0ms ease;
+}
+
+#form-content {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  height: 100%;
+}
+
+#content-label {
+  margin-top: 20px;
+}
+
+#content {
+  color: #e8e8e8;
+  background-color: #0d1117;
+  font-family: "Fira Code Regular", Monaco, Courier, monospace;
+  font-size: 22px;
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+#content:focus {
+  outline: none;
+}

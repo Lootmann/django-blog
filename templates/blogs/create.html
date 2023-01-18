@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'components/form.css' %}">
+  <link rel="stylesheet" href="{% static 'blogs/create.css' %}">
+{% endblock %}
+
+{% block title %}
+  blogs/create.html
+{% endblock %}
+
+{% block content %}
+  <main id="main">
+    <h1 class="h1">blogs/create.html</h1>
+
+    <div class="mt-1">
+      <form action="" method="post" class="form">
+        {% csrf_token %}
+
+        <div class="field p-1">
+          <div class="label">
+            {{ form.title.label }}
+          </div>
+          {% render_field form.title class+="input" %}
+        </div>
+
+        <div class="field p-1">
+          <div class="label">
+            {{ form.content.label }}
+          </div>
+          {% render_field form.content class+="input" %}
+        </div>
+
+        <div class="field p-1">
+            <span class="is_public">
+              <span class="label">{{ form.is_public.label }}</span>
+              {% render_field form.is_public class+="checkbox" %}
+            </span>
+        </div>
+
+        <input type="submit" value="Create" class="button">
+      </form>
+    </div>
+  </main>
+{% endblock %}

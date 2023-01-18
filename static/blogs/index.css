@@ -1,0 +1,50 @@
+.blog-list {
+  width: 50%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.blog {
+  border: 1px solid black;
+}
+
+.blog > .blog-header {
+  background-color: antiquewhite;
+  padding: 10px;
+}
+
+.blog > .blog-header > .author-name {
+  font-weight: bold;
+  margin-right: 10px;
+  border-bottom: 1px solid black;
+}
+
+.blog > .blog-header > .created-at {
+}
+
+.blog > .blog-content {
+  display: block;
+  padding: 10px;
+  background-color: burlywood;
+}
+
+.blog > .blog-content:link,
+.blog > .blog-content:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.blog > .blog-content:hover {
+  background-color: #ffc707;
+  transition: all 100ms 0s ease;
+}
+
+.blog > .blog-content > .title {
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.blog > .blog-content > .content {
+}

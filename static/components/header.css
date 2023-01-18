@@ -1,0 +1,41 @@
+#header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  height: 40px;
+  padding: 0 50px;
+  width: 50%;
+}
+
+#header > a {
+  font-size: 25px;
+}
+
+#header > a:visited,
+#header > a:hover {
+  color: inherit;
+}
+
+#header > .separate {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#header > .user-profile > * {
+  font-size: 25px;
+}
+
+#header > .user-profile {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: baseline;
+}
+
+#header > .user-profile > .username {
+}
+
+#header > .user-profile > a {
+  text-decoration: none;
+}

@@ -1,0 +1,53 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: #393939;
+  border-radius: 10px;
+  width: 50%;
+  gap: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5px 0;
+}
+
+.label {
+  color: #e8e8e8;
+  font-size: 25px;
+  margin-bottom: 3px;
+}
+
+.input {
+  background-color: #e8e8e8;
+  font-size: 25px;
+  border-radius: 10px;
+  padding: 2px 0 2px 8px;
+}
+
+.is_public {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  font-size: 25px;
+  gap: 20px;
+}
+
+.is_public > input.checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+.button {
+  color: #393939;
+  font-size: 25px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.button:hover {
+  color: #e8e8e8;
+  background-color: green;
+}

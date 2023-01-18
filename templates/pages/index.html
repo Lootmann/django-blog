@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'pages/index.css' %}">
+{% endblock %}
+
+{% block title %}
+  pages/index.html
+{% endblock %}
+
+{% block content %}
+  <main id="main">
+    <h1 class="h1 ml-2">pages/index.html</h1>
+
+    <div class="blog-list ml-2">
+      {% for blog in blogs %}
+        {% if blog.is_public %}
+          <div class="mt-1 blog">
+            <header class="blog-header">
+              <span class="author-name rounded">@{{ blog.author.username }}</span>
+              <span class="rounded">Reader Counts: {{ blog.clicked_count }}</span>
+              <span class="rounded">Time to Read: {{ blog.time_to_read }}min</span>
+              <span class="created-at rounded">Created At: {{ blog.created_at }}</span>
+            </header>
+
+            <a href="{% url 'blogs:detail' blog.id %}" class="blog-content">
+              <p class="title">{{ blog.title }}</p>
+              <p class="content">{{ blog.content_short }}</p>
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </main>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load widget_tweaks %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'components/form.css' %}">
+  <link rel="stylesheet" href="{% static 'registration/signup.css' %}">
+{% endblock %}
+
+{% block title %}
+  SignUp
+{% endblock %}
+
+{% block content %}
+  <main id="main">
+    <h1>SignUp</h1>
+
+    <form action="" method="post" class="form p-1">
+      {% csrf_token %}
+
+      <div class="field">
+        <div class="label">
+          {{ form.email.label }}
+        </div>
+
+        {% render_field form.email class+="input" %}
+      </div>
+
+      <div class="field">
+        {{ form.username.text }}
+        <div class="label">
+          {{ form.username.label }}
+        </div>
+
+        {% render_field form.username class+="input" %}
+      </div>
+
+      <div class="field">
+        <div class="label">
+          {{ form.password1.label }}
+        </div>
+        {% render_field form.password1 class+="input" %}
+      </div>
+
+      <div class="field">
+        <div class="label">
+          {{ form.password2.label }}
+        </div>
+        {% render_field form.password2 class+="input" %}
+      </div>
+
+      <div class="field">
+        <input type="submit" value="SignUp" class="button">
+      </div>
+    </form>
+  </main>
+{% endblock %}

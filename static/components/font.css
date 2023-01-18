@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "Fira Code Light";
+  src: url("/static/fonts/FiraCode-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Fira Code Regular";
+  src: url("/static/fonts/FiraCode-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Fira Code Medium";
+  src: url("/static/fonts/FiraCode-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Fira Code SemiBold";
+  src: url("/static/fonts/FiraCode-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Fira Code Bold";
+  src: url("/static/fonts/FiraCode-Bold.ttf") format("truetype");
+}

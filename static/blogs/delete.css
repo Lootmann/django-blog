@@ -1,0 +1,12 @@
+.button {
+  font-size: 22px;
+  padding: 2px 5px;
+  border-radius: 10px;
+}
+
+.button:hover {
+  font-weight: bold;
+  color: red;
+  background-color: black;
+  transition: all 100ms 0s ease;
+}
